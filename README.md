@@ -64,3 +64,17 @@ url  de Mi service
 http://localhost:52773/csp/mario/cysnet.mario.ws.MiServicio.cls?WSDL 
 http://localhost:52773/csp/healthshare/mario/cysnet.mario.ws.MiServicio.cls?WSDL 
 ```
+
+
+# DATABASE
+
+```sql
+SELECT * FROM cysnet_mario_data.Personas
+```
+
+```sql
+INSERT INTO cysnet_mario_data.Personas (nombre, apellido,edad) VALUES ('Persona1','de Prueba',18)
+INSERT INTO cysnet_mario_data.Personas (nombre, apellido,edad) VALUES ('Persona2','de Prueba',19)
+INSERT INTO cysnet_mario_data.Personas (nombre, apellido,edad) VALUES ('Persona3','de Prueba',20)
+INSERT INTO cysnet_mario_data.Personas (nombre, apellido,edad) VALUES ('Persona4','de Prueba',21)
+```
