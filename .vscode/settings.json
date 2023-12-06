@@ -1,0 +1,12 @@
+{
+  "intersystems.servers": {
+    "local-mario": {
+      "webServer": {
+        "scheme": "http",
+        "host": "localhost",
+        "port": 52773
+      },
+      "username": "_SYSTEM"
+    }
+  }
+}
