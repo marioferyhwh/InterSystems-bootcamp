@@ -23,7 +23,7 @@ Method obtenerPersona(idPer As %Integer) As cysnet.mario.msg.ObtenerPersonaRespo
 	Set req = ##class(cysnet.mario.msg.ObtenerPersonaRequest).%New()
 	Set req.idPersona = idPer
 	
-	Do ..SendRequestSync("DBCache", req, .rsp)
+	Do ..SendRequestSync("miProceso", req, .rsp)
 	
 	Quit rsp
 }
