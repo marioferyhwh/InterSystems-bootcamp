@@ -16,6 +16,9 @@ Method obtenerPersona(pRequest As cysnet.mario.msg.ObtenerPersonaRequest, Output
             Set pResponse.edad = rs.Data("edad")
             Set pResponse.direccion  = rs.Data("direccion")
             Set pResponse.codPostal = rs.Data("codPostal")
+            Set pResponse.mensaje = ""
+        }else{
+            Set pResponse.mensaje = "La persona con ID "_pRequest.idPersona_" no existe."
         }
         Do rs.Close()
 
