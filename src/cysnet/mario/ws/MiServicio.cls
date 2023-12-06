@@ -12,7 +12,7 @@ Parameter USECLASSNAMESPACES = 1;
 
 Method saludo() As %String [ WebMethod ]
 {
-	Quit "Hola Mundo1!"
+	Quit "Hola mario!"
 }
 
 }
