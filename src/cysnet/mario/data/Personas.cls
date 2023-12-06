@@ -7,6 +7,10 @@ Property apellido As %String;
 
 Property edad As %Integer;
 
+Property direccion As %String;
+
+Property codPostal As %Integer;
+
 Storage Default
 {
 <Data name="PersonasDefaultData">
@@ -21,6 +25,12 @@ Storage Default
 </Value>
 <Value name="4">
 <Value>edad</Value>
+</Value>
+<Value name="5">
+<Value>direccion</Value>
+</Value>
+<Value name="6">
+<Value>codPostal</Value>
 </Value>
 </Data>
 <DataLocation>^cysnet.mario.data.PersonasD</DataLocation>

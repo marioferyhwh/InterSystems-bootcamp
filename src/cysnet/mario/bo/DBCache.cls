@@ -14,6 +14,8 @@ Method obtenerPersona(pRequest As cysnet.mario.msg.ObtenerPersonaRequest, Output
             Set pResponse.nombre = rs.Data("nombre")
             Set pResponse.apellido = rs.Data("apellido")
             Set pResponse.edad = rs.Data("edad")
+            Set pResponse.direccion  = rs.Data("direccion")
+            Set pResponse.codPostal = rs.Data("codPostal")
         }
         Do rs.Close()
 

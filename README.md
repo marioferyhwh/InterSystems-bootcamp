@@ -73,8 +73,8 @@ SELECT * FROM cysnet_mario_data.Personas
 ```
 
 ```sql
-INSERT INTO cysnet_mario_data.Personas (nombre, apellido,edad) VALUES ('Persona1','de Prueba',18)
-INSERT INTO cysnet_mario_data.Personas (nombre, apellido,edad) VALUES ('Persona2','de Prueba',19)
-INSERT INTO cysnet_mario_data.Personas (nombre, apellido,edad) VALUES ('Persona3','de Prueba',20)
-INSERT INTO cysnet_mario_data.Personas (nombre, apellido,edad) VALUES ('Persona4','de Prueba',21)
+INSERT INTO cysnet_mario_data.Personas (nombre, apellido,edad,direccion,codPostal) VALUES ('Persona1','de Prueba',18,'calle 18',12341)
+INSERT INTO cysnet_mario_data.Personas (nombre, apellido,edad,direccion,codPostal) VALUES ('Persona2','de Prueba',19,'calle 19',12342)
+INSERT INTO cysnet_mario_data.Personas (nombre, apellido,edad,direccion,codPostal) VALUES ('Persona3','de Prueba',20,'calle 20',12343)
+INSERT INTO cysnet_mario_data.Personas (nombre, apellido,edad,direccion,codPostal) VALUES ('Persona4','de Prueba',21,'calle 21',12344)
 ```
