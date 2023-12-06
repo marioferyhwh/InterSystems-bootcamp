@@ -8,5 +8,10 @@
       },
       "username": "_SYSTEM"
     }
+  },
+  "objectscript.conn": {
+    "server": "local-mario",
+    "ns": "MARIO",
+    "active": true
   }
 }
