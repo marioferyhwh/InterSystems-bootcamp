@@ -6,12 +6,13 @@
         "host": "localhost",
         "port": 52773
       },
-      "username": "_SYSTEM"
+      "username": "_SYSTEM",
     }
   },
   "objectscript.conn": {
     "server": "local-mario",
     "ns": "MARIO",
     "active": true
-  }
+  },
+  "explorer.compactFolders": false
 }

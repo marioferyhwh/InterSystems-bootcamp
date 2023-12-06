@@ -58,3 +58,9 @@ docker exec -u root -ti katas-iris /bin/bash
 docker container list
 ```
 
+
+url  de Mi service
+```
+http://localhost:52773/csp/mario/cysnet.mario.ws.MiServicio.cls?WSDL 
+http://localhost:52773/csp/healthshare/mario/cysnet.mario.ws.MiServicio.cls?WSDL 
+```
