@@ -3,7 +3,9 @@ services:
   iris:
     #image: containers.intersystems.com/intersystems/irishealth-community-arm64:2023.2.0.227.0
     #image: containers.intersystems.com/intersystems/irishealth-community:2023.2.0.227.0
-    image: intersystemsdc/iris-community:2023.2-zpm
+    #image: intersystemsdc/iris-community:2023.2-zpm
+    image: intersystemsdc/irishealth-community
+    #image: intersystemsdc/irishealth-ml-community
     hostname: katas-iris
     container_name: katas-iris
     ports:
@@ -22,6 +24,9 @@ services:
       - type: bind
         source: ./iris-shared
         target: /shared
+      - type: bind
+        source: ./iris-test
+        target: /home/irisowner/Test
     environment:
       - ISC_DATA_DIRECTORY=/shared/iris
   mysql:
