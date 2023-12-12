@@ -11,8 +11,9 @@ XData RuleDefinition [ XMLNamespace = "http://www.intersystems.com/rule" ]
 <rule name="InFileHL7" disabled="false">
 <constraint name="source" value="InFileHL7"></constraint>
 <constraint name="docCategory" value="2.5"></constraint>
-<constraint name="docName" value=""></constraint>
+<constraint name="docName" value="ADT_A01"></constraint>
 <when condition="1" comment="">
+<send transform="cysnet.mario.dtl.HL7ToCrearPersona" target="DBCache"></send>
 </when>
 </rule>
 </ruleSet>

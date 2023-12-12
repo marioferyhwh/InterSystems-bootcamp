@@ -17,9 +17,22 @@ Method obtenerPersona(pRequest As cysnet.mario.msg.ObtenerPersonaRequest, Output
             Set pResponse.direccion  = rs.Data("direccion")
             Set pResponse.codPostal = rs.Data("codPostal")
             Set pResponse.mensaje = ""
-        }else{
+        }Else{
             Set pResponse.mensaje = "La persona con ID "_pRequest.idPersona_" no existe."
         }
+        Do rs.Close()
+
+        Quit $$$OK
+}
+
+Method crearPersona(pRequest As cysnet.mario.msg.CrearPersonaRequest, Output pResponse As cysnet.mario.msg.CrearPersonaResponse) As %Status
+{
+        Set pResponse = ##class(cysnet.mario.msg.CrearPersonaResponse).%New()
+
+        Set rs = ##class(%ResultSet).%New("%DynamicQuery:SQL")
+
+        Do rs.Prepare("insert into cysnet_mario_data.Personas (nombre, apellido) values ('"_pRequest.nombre_"', '"_pRequest.apellido_"')")
+        Do rs.Execute()
         Do rs.Close()
 
         Quit $$$OK
@@ -30,6 +43,9 @@ XData MessageMap
 <MapItems>
       <MapItem MessageType="cysnet.mario.msg.ObtenerPersonaRequest">
           <Method>obtenerPersona</Method>
+      </MapItem>
+      <MapItem MessageType="cysnet.mario.msg.CrearPersonaRequest">
+          <Method>crearPersona</Method>
       </MapItem>
   </MapItems>
 }
