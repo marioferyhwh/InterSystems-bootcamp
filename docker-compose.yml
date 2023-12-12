@@ -9,7 +9,7 @@ services:
     hostname: katas-iris
     container_name: katas-iris
     ports:
-      - 51773:51773
+      - :51773
       - 52773:52773
       - 53773:53773
       - 54773:54773
