@@ -12,6 +12,16 @@ XData ProductionDefinition
   </Item>
   <Item Name="miProceso" Category="" ClassName="cysnet.mario.bp.MiProceso" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
   </Item>
+  <Item Name="InFileHL7" Category="" ClassName="EnsLib.HL7.Service.FileService" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Adapter" Name="FilePath">/home/irisowner/Test/HL7/in/</Setting>
+    <Setting Target="Adapter" Name="ArchivePath">/home/irisowner/Test/HL7/out/</Setting>
+    <Setting Target="Adapter" Name="FileSpec">*.hl7</Setting>
+    <Setting Target="Host" Name="MessageSchemaCategory">2.5</Setting>
+    <Setting Target="Host" Name="TargetConfigNames">HL7RoutingProcess</Setting>
+  </Item>
+  <Item Name="HL7RoutingProcess" Category="" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Host" Name="BusinessRuleName">cysnet.mario.rules.HL7RoutingRule</Setting>
+  </Item>
 </Production>
 }
 
