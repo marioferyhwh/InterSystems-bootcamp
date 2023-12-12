@@ -28,11 +28,20 @@ Method obtenerPersona(pRequest As cysnet.mario.msg.ObtenerPersonaRequest, Output
 Method crearPersona(pRequest As cysnet.mario.msg.CrearPersonaRequest, Output pResponse As cysnet.mario.msg.CrearPersonaResponse) As %Status
 {
         Set pResponse = ##class(cysnet.mario.msg.CrearPersonaResponse).%New()
+        
+        Set rs = ##class(%ResultSet).%New("%DynamicQuery:SQL")
+        Do rs.Prepare("SELECT * FROM cysnet_mario_data.Personas WHERE nombre = ? and apellido = ?")
+        Do rs.Execute(pRequest.nombre, pRequest.apellido)
+        If (rs.Next()) {
+          Do rs.Close()
+          Quit $$$OK
+        }
+        Do rs.Close()
+        
 
         Set rs = ##class(%ResultSet).%New("%DynamicQuery:SQL")
-
-        Do rs.Prepare("insert into cysnet_mario_data.Personas (nombre, apellido) values ('"_pRequest.nombre_"', '"_pRequest.apellido_"')")
-        Do rs.Execute()
+        Do rs.Prepare("INSERT INTO cysnet_mario_data.Personas (nombre, apellido) VALUES (?, ?)")
+        Do rs.Execute(pRequest.nombre, pRequest.apellido)
         Do rs.Close()
 
         Quit $$$OK
