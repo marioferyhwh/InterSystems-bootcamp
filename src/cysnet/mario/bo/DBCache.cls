@@ -38,10 +38,10 @@ Method crearPersona(pRequest As cysnet.mario.msg.CrearPersonaRequest, Output pRe
         }
         Do rs.Close()
         
-
+ 
         Set rs = ##class(%ResultSet).%New("%DynamicQuery:SQL")
-        Do rs.Prepare("INSERT INTO cysnet_mario_data.Personas (nombre, apellido) VALUES (?, ?)")
-        Do rs.Execute(pRequest.nombre, pRequest.apellido)
+        Do rs.Prepare("INSERT INTO cysnet_mario_data.Personas (nombre, apellido, direccion, codPostal, edad) VALUES (?, ?, ?, ?, ?)")
+        Do rs.Execute(pRequest.nombre, pRequest.apellido, pRequest.direccion, pRequest.codPostal,19)
         Do rs.Close()
 
         Quit $$$OK
