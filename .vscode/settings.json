@@ -12,7 +12,10 @@
   "objectscript.conn": {
     "server": "local-mario",
     "ns": "MARIO",
-    "active": true
+    "active": true,
+    "links": {
+      "SOAP Wizard": "${serverUrl}/isc/studio/templates/%25ZEN.Template.AddInWizard.SOAPWizard.cls?Namespace=${namespace}${serverAuth}"
+    }
   },
   "explorer.compactFolders": false
 }

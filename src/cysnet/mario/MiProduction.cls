@@ -22,6 +22,9 @@ XData ProductionDefinition
   <Item Name="HL7RoutingProcess" Category="" ClassName="EnsLib.HL7.MsgRouter.RoutingEngine" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
     <Setting Target="Host" Name="BusinessRuleName">cysnet.mario.rules.HL7RoutingRule</Setting>
   </Item>
+  <Item Name="MiServicioWs" Category="" ClassName="cysnet.mario.wc.MiServicio.bo.MiServicioSoap" PoolSize="1" Enabled="true" Foreground="false" Comment="" LogTraceEvents="false" Schedule="">
+    <Setting Target="Adapter" Name="WebServiceURL">http://localhost:1980/csp/mario/cysnet.mario.ws.MiServicio.cls</Setting>
+  </Item>
 </Production>
 }
 
