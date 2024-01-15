@@ -26,16 +26,16 @@ If you want to learn more about creating good readme files then refer the follow
 
 
 ```sh
+mkdir mysql-shared
+
 mkdir iris-shared
 touch iris-shared/pass.txt
-mkdir mysql-shared
 echo "clave" >> iris-shared/pass.txt
 
-mkdir iris-test
-mkdir iris-test/HL7
-mkdir iris-test/HL7/in
-mkdir iris-test/HL7/out
-mkdir iris-test/HL7/proc
+mkdir iris-shared/HL7
+mkdir iris-shared/HL7/in
+mkdir iris-shared/HL7/out
+mkdir iris-shared/HL7/proc
 ```
 
 https://docs.intersystems.com/components/csp/docbook/DocBook.UI.Page.cls?KEY=PAGE_containerregistry
