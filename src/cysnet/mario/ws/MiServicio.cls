@@ -28,4 +28,21 @@ Method obtenerPersona(idPer As %Integer) As cysnet.mario.msg.ObtenerPersonaRespo
 	Quit rsp
 }
 
+Method crearPersona(nombre As %String, apellido As %String, direccion As %String, fechaNacimiento As %String, codPostal As %Integer) As cysnet.mario.msg.CrearPersonaResponse [ WebMethod ]
+{
+	#dim req As cysnet.mario.msg.CrearPersonaRequest
+	#dim rsp As cysnet.mario.msg.CrearPersonaResponse
+	
+	set req = ##class(cysnet.mario.msg.CrearPersonaRequest).%New()
+	set req.nombre = nombre
+	set req.apellido = apellido
+	set req.direccion = direccion
+	set req.fechaNacimiento = fechaNacimiento
+	set req.codPostal = codPostal
+	
+	do ..SendRequestSync("DBCache", req, .rsp)
+	
+	quit rsp
+}
+
 }

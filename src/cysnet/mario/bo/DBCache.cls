@@ -38,7 +38,8 @@ Method crearPersona(pRequest As cysnet.mario.msg.CrearPersonaRequest, Output pRe
     If (rs.%Next(.sc)) {
       Quit sc
     }
-    
+    If (pRequest.fechaNacimiento){
+
     Set anio = $EXTRACT(pRequest.fechaNacimiento, 1, 4)
     Set mes = $EXTRACT(pRequest.fechaNacimiento, 5, 6)
     Set dia = $EXTRACT(pRequest.fechaNacimiento, 7, 8)
@@ -53,6 +54,9 @@ Method crearPersona(pRequest As cysnet.mario.msg.CrearPersonaRequest, Output pRe
     Set edadEnAnios=((fechaActual - fechaNacimiento)/365.25)
 
     Set edad=$PIECE(edadEnAnios,".",1)
+    }Else{
+      Set edad = "0"
+    }
     
     Set stm = ##class(%SQL.Statement).%New()
     //&sql(INSERT INTO cysnet_mario_data.Persona (nombre, apellido, direccion, codPostal, edad) VALUES (:pRequest.nombre, :pRequest.apellidos, :pRequest.direccion, :pRequest.codPostal, :edad))
