@@ -6,7 +6,6 @@ Method obtenerPersona(pRequest As cysnet.mario.msg.ObtenerPersonaRequest, Output
 {
   
   #dim sc As %Status = $$$OK
-  #dim rs As %ResultSet
 
   Set pResponse = ##class(cysnet.mario.msg.ObtenerPersonaResponse).%New()
   Set stm = ##class(%SQL.Statement).%New()
@@ -25,35 +24,20 @@ Method obtenerPersona(pRequest As cysnet.mario.msg.ObtenerPersonaRequest, Output
       Set pResponse.mensaje = "La persona con ID "_pRequest.idPersona_" no existe."
   }
     
-  If ($$$ISOK(sc)) {
-  Set sc = rs.Close()
-  }
-
   Quit sc
 }
 
 Method crearPersona(pRequest As cysnet.mario.msg.CrearPersonaRequest, Output pResponse As cysnet.mario.msg.CrearPersonaResponse) As %Status
 {
     #dim sc As %Status = $$$OK
-    #dim rs As %ResultSet
 
-    Set rs = ##class(%ResultSet).%New("%DynamicQuery:SQL")
-    Set sc =  rs.Prepare("SELECT * FROM cysnet_mario_data.Personas WHERE nombre = ? and apellido = ?")
-    If ($$$ISOK(sc)) {
-      Set sc =  rs.Execute(pRequest.nombre, pRequest.apellido)
-    }
+    Set stm = ##class(%SQL.Statement).%New()
+    Do stm.%Prepare("SELECT * FROM cysnet_mario_data.Personas WHERE nombre = ? and apellido = ?")
+    Set rs =  stm.%Execute(pRequest.nombre, pRequest.apellido)
     
-    If (rs.Next(.sc)) {
-
-      If ($$$ISOK(sc)) {
-      Set sc =  rs.Close()
-      }
+    If (rs.%Next(.sc)) {
       Quit sc
     }
-    If ($$$ISOK(sc)) {
-    Set sc =  rs.Close()
-    }
-
     
     Set anio = $EXTRACT(pRequest.fechaNacimiento, 1, 4)
     Set mes = $EXTRACT(pRequest.fechaNacimiento, 5, 6)
@@ -70,17 +54,12 @@ Method crearPersona(pRequest As cysnet.mario.msg.CrearPersonaRequest, Output pRe
 
     Set edad=$PIECE(edadEnAnios,".",1)
     
+    Set stm = ##class(%SQL.Statement).%New()
+    //&sql(INSERT INTO cysnet_mario_data.Persona (nombre, apellido, direccion, codPostal, edad) VALUES (:pRequest.nombre, :pRequest.apellidos, :pRequest.direccion, :pRequest.codPostal, :edad))
     
-    Set rs = ##class(%ResultSet).%New("%DynamicQuery:SQL")
-    Set sc =   rs.Prepare("INSERT INTO cysnet_mario_data.Personas (nombre, apellido, direccion, codPostal, edad) VALUES (?, ?, ?, ?, ?)")
+    Do stm.%Prepare("INSERT INTO cysnet_mario_data.Personas (nombre, apellido, direccion, codPostal, edad) VALUES (?, ?, ?, ?, ?)")
     
-    If ($$$ISOK(sc)) {
-    Set sc =   rs.Execute(pRequest.nombre, pRequest.apellido, pRequest.direccion, pRequest.codPostal,edad)
-    }
-    If ($$$ISOK(sc)) {
-    Set sc =  rs.Close()
-    }
-
+    Set rs = stm.%Execute(pRequest.nombre, pRequest.apellido, pRequest.direccion, pRequest.codPostal ,edad)
 
     Quit sc
 }
