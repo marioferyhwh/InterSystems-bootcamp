@@ -13,6 +13,10 @@ Property codPostal As %Integer;
 
 Property mensaje As %String(MAXLEN = 255);
 
+Property exito As %Boolean;
+
+Property error As %String(MAXLEN = 255);
+
 Storage Default
 {
 <Data name="ObtenerPersonaResponseDefaultData">
@@ -34,6 +38,12 @@ Storage Default
 </Value>
 <Value name="6">
 <Value>mensaje</Value>
+</Value>
+<Value name="7">
+<Value>exito</Value>
+</Value>
+<Value name="8">
+<Value>error</Value>
 </Value>
 </Data>
 <DefaultData>ObtenerPersonaResponseDefaultData</DefaultData>
