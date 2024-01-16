@@ -19,6 +19,11 @@ XData BPL [ XMLNamespace = "http://www.intersystems.com/bpl" ]
 </parameters>
 </property>
 <property name='resultadoRegla' type='%Boolean' initialexpression='0' instantiate='0' />
+<property name='destinatario' type='%String' instantiate='0' >
+<parameters>
+<parameter name='MAXLEN'  value='' />
+</parameters>
+</property>
 </context>
 <sequence xend='200' yend='1400' >
 <assign name="Asignar objReq" property="context.objReq" value="request" action="set" xpos='200' ypos='250' />
@@ -27,9 +32,9 @@ XData BPL [ XMLNamespace = "http://www.intersystems.com/bpl" ]
 </rule>
 <if name='todo bien' condition='context.resultadoRegla = 1' xpos='200' ypos='550' xend='200' yend='1300' >
 <true>
-<switch name='Según mensaje' xpos='335' ypos='700' xend='335' yend='1200' >
+<switch name='Según mensaje' xpos='470' ypos='700' xend='470' yend='1200' >
 <case condition='request.%ClassName() = "CrearPersonaRequest"' name='crearPersona' >
-<call name='crear Persona' target='DBCache' async='0' xpos='470' ypos='850' >
+<call name='crear Persona' target='DBCache' async='0' xpos='605' ypos='850' >
 <request type='cysnet.mario.msg.CrearPersonaRequest' >
 <assign property="callrequest" value="request" action="set" />
 </request>
@@ -39,9 +44,9 @@ XData BPL [ XMLNamespace = "http://www.intersystems.com/bpl" ]
 </call>
 </case>
 <case condition='request.%ClassName() = "ObtenerPersonaRequest"' name='ObtenerPersona' >
-<if name='&gt; 0' condition='request.idPersona &gt; 0' xpos='740' ypos='850' xend='740' yend='1100' >
+<if name='&gt; 0' condition='request.idPersona &gt; 0' xpos='875' ypos='850' xend='875' yend='1100' >
 <true>
-<call name='Obtener Persona' target='DBCache' async='0' xpos='1010' ypos='1000' >
+<call name='Obtener Persona' target='DBCache' async='0' xpos='1145' ypos='1000' >
 <request type='cysnet.mario.msg.ObtenerPersonaRequest' >
 <assign property="callrequest" value="request" action="set" />
 </request>
@@ -51,13 +56,23 @@ XData BPL [ XMLNamespace = "http://www.intersystems.com/bpl" ]
 </call>
 </true>
 <false>
-<assign name="MESSAGE" property="response.mensaje" value="&quot;Este es el mensaje de error&quot;" action="set" xpos='740' ypos='1000' />
+<assign name="MESSAGE" property="response.mensaje" value="&quot;Este es el mensaje de error&quot;" action="set" xpos='875' ypos='1000' />
 </false>
 </if>
 </case>
 <default name='default' />
 </switch>
 </true>
+<false>
+<call name='Enviar email' target='EnviarEmail' async='0' xpos='200' ypos='700' >
+<request type='cysnet.mario.msg.EnviarEmailRequest' >
+<assign property="callrequest.asunto" value="&quot;Datos incorrectos&quot;" action="set" />
+<assign property="callrequest.mensaje" value="&quot;los datos recibidos son incorrectos&quot;" action="set" />
+<assign property="callrequest.destinatario" value="context.destinatario" action="set" />
+</request>
+<response type='cysnet.mario.msg.EnviarEmailResponse' />
+</call>
+</false>
 </if>
 </sequence>
 </process>

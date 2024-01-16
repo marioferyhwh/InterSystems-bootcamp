@@ -7,6 +7,7 @@ Parameter RuleAssistClass = "Ens.Rule.GeneralBusinessRuleAssist";
 XData RuleDefinition [ XMLNamespace = "http://www.intersystems.com/rule" ]
 {
 <ruleDefinition alias="" context="cysnet.mario.bp.MiProceso.Context" production="">
+
 <ruleSet name="" effectiveBegin="" effectiveEnd="">
 <rule name="Comrpobar ObtenerPersona" disabled="false">
 <when condition="nombreClase=&quot;ObtenerPersonaRequest&quot;" comment="">
@@ -15,9 +16,9 @@ XData RuleDefinition [ XMLNamespace = "http://www.intersystems.com/rule" ]
 <return>1</return>
 </when>
 </rule>
+<assign property="destinatario" value="&quot;mrobayo+1@cidenet.com.co&quot;"></assign>
 </when>
 </rule>
-
 <rule name="Comprobar CrearPersona" disabled="false">
 <when condition="nombreClase=&quot;CrearPersonaRequest&quot;" comment="">
 <rule name="Comprobar nombre y apellido" disabled="false">
@@ -25,6 +26,7 @@ XData RuleDefinition [ XMLNamespace = "http://www.intersystems.com/rule" ]
 <return>1</return>
 </when>
 </rule>
+<assign property="destinatario" value="&quot;mrobayo+2@cidenet.com.co&quot;"></assign>
 </when>
 </rule>
 </ruleSet>
