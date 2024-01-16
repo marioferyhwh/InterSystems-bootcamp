@@ -23,9 +23,6 @@ services:
       - type: bind
         source: ./iris-shared
         target: /shared
-      - type: bind
-        source: ./iris-test
-        target: /home/irisowner/Test
     environment:
       - ISC_DATA_DIRECTORY=/shared/iris
   mysql:

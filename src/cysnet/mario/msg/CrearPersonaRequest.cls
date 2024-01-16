@@ -1,11 +1,11 @@
 Class cysnet.mario.msg.CrearPersonaRequest Extends Ens.Request
 {
 
-Property nombre As %String;
+Property nombre As %String(MAXLEN = "");
 
-Property apellido As %String;
+Property apellido As %String(MAXLEN = "");
 
-Property direccion As %String;
+Property direccion As %String(MAXLEN = "");
 
 Property codPostal As %Integer;
 
