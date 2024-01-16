@@ -23,7 +23,7 @@ Method obtenerPersona(idPer As %Integer) As cysnet.mario.msg.ObtenerPersonaRespo
 	Set req = ##class(cysnet.mario.msg.ObtenerPersonaRequest).%New()
 	Set req.idPersona = idPer
 	
-	Do ..SendRequestSync("miProceso", req, .rsp)
+	Do ..SendRequestSync("miProcesoCodigo", req, .rsp)
 	
 	Quit rsp
 }
@@ -40,7 +40,7 @@ Method crearPersona(nombre As %String, apellido As %String, direccion As %String
 	set req.fechaNacimiento = fechaNacimiento
 	set req.codPostal = codPostal
 	
-	do ..SendRequestSync("miProceso", req, .rsp)
+	do ..SendRequestSync("miProcesoCodigo", req, .rsp)
 	
 	quit rsp
 }
